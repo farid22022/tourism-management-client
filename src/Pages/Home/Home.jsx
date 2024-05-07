@@ -1,9 +1,12 @@
+import Header from "../../Shared/Header";
+import Menu from "../../Shared/Menu";
 
 
 const Home = () => {
     return (
         <div>
-            <h2>This is home</h2>
+            <Header></Header>
+            <Menu></Menu>
         </div>
     );
 };
