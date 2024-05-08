@@ -220,7 +220,7 @@ const AddTouristsSpot = () => {
               <button className="btn btn-primary">Add </button>
             </div>
           </form>
-          <p className='text-xl text-center text-red-900 font-bold pb-5'>As A Tour Manager , want to update existing spot? Please Click on <Link className='text-blue-950 underline' to="/updatetourspot">Update <span className='font-serif'>A</span> Spot</Link></p>
+          
         </div>
       </div>
     </div>

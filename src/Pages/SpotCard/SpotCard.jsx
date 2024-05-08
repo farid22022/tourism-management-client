@@ -30,8 +30,8 @@ const SpotCard = ({spot, spots, setSpots}) => {
         <p className="text-3xl font-extrabold text-blue-600">description: </p>
         <p className="font-serif text-xl">{description}</p>
         <div className="card-actions justify-end">
-          
           <Link to={`/spotcarddetails/${_id}`}><button className="bg-cyan-400 btn btn-primary text-xl border-b-4 border-cyan-800">View Details</button></Link>
+          
         </div>
       </div>
     </div>

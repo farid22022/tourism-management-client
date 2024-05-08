@@ -1,4 +1,5 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 /**
  *     const {
         _id,
@@ -22,6 +23,47 @@ const SpotCardDetails = () => {
 //   const idInt = parseInt(_id);
   const spotPlace = spotPlaces.find((spotPlace) => spotPlace._id === _id);
   console.log(spotPlace)
+
+  const handleDelete = _id =>{
+    console.log(_id);
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+        fetch(`http://localhost:5000/spot/${_id}`, {
+            method: 'DELETE',
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if(data.deletedCount > 0 ){
+                    Swal.fire({
+                            title: "Deleted!",
+                            text: "Your Coffee item has been deleted.",
+                            icon: "success"
+                        }).then(() =>{
+                          window.location.href="/";
+                        });
+                        
+                }
+                
+            })
+            .catch(error =>{
+              console.log('Error deleting item:',error)
+            });
+        }
+
+      });
+
+  }
 
   return (
     <div className="card card-compact w-3/5 bg-base-100 shadow-xl">
@@ -58,6 +100,10 @@ const SpotCardDetails = () => {
         <div className="card-actions justify-end">
           <button className="btn btn-primary border-b-4 border-indigo-950 bg-indigo-500">Buy Now</button>
           <button className="btn btn-primary border-b-4 border-indigo-950 bg-indigo-500">Visited !</button>
+        </div>
+        <div>
+        <Link to={`/updatetourspot/${_id}`}><button className="bg-cyan-400 btn btn-primary text-xl border-b-4 border-cyan-800">Update Spot</button></Link>
+        <button onClick={() =>handleDelete(_id)} className="bg-cyan-400 btn btn-primary text-xl border-b-4 border-cyan-800">Delete Spot</button>
         </div>
       </div>
     </div>

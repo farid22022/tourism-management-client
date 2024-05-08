@@ -1,5 +1,7 @@
 import Swal from "sweetalert2";
 import Menu from "../../Shared/Menu";
+import { Link } from "react-router-dom";
+import 'animate.css';
 
 const UpdateTouristSpot = () => {
     const handleUpdate = e =>{
@@ -18,7 +20,7 @@ const UpdateTouristSpot = () => {
         const name = form.name.value;
         console.log(image, tourSpot, country ,location ,description, cost, season, time, total, email, name);
 
-        const newSpot ={
+        const updatedSpot ={
             image, 
             tourSpot, 
             country ,
@@ -33,12 +35,12 @@ const UpdateTouristSpot = () => {
         }
 
         //server side for sending data
-        fetch('http://localhost:5000/spot', {
-            method: 'POST',
+        fetch('http://localhost:5000/spot/${_id}', {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newSpot)
+            body: JSON.stringify(updatedSpot)
         })
             .then(res => res.json())
             .then(data => {
@@ -214,6 +216,9 @@ const UpdateTouristSpot = () => {
                 <button className="btn btn-primary">Update </button>
               </div>
             </form>
+            <p className="text-2xl font-bold text-center ">Do you want to add new spot instead of update </p>
+            <p className="text-center text-xl font-bold mb-4">Then Click below</p>
+            <p className="text-center text-xl animate__animated animate__bounce animate__infinite mb-4"><span className="text-pink-500 font-semibold"></span><span className="text-blue-800 font-extrabold underline animate__animated animate__bounce animate__infinite"><Link  to="/addspots">Add New Spot</Link></span></p>
           </div>
         </div>
       </div>
