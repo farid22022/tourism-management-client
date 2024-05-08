@@ -1,11 +1,8 @@
-import Swal from 'sweetalert2'
-import Menu from '../../Shared/Menu';
-import { Link } from 'react-router-dom';
-const AddTouristsSpot = () => {
-    //image, spot, country ,location ,description, cost, season, time, 
-    //total, email, name
+import Swal from "sweetalert2";
+import Menu from "../../Shared/Menu";
 
-    const handleAdd = e =>{
+const UpdateTouristSpot = () => {
+    const handleUpdate = e =>{
         e.preventDefault();
         const form = e.target;
         const image = form.image.value;
@@ -56,176 +53,172 @@ const AddTouristsSpot = () => {
                 }
             })
     }
-
   return (
     <div>
-        <Menu></Menu>
-        <div className="hero  bg-base-200">
-      <div className="hero-content flex-col w-full">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Add Tourists Spot now!</h1>
-        </div>
-        <div className="card shrink-0 w-full  shadow-2xl bg-base-100">
-          <form onSubmit={handleAdd} className="card-body">
-            <div className="flex justify-between space-x-3">
+      <Menu></Menu>
+      <div className="hero  bg-base-200">
+        <div className="hero-content flex-col w-full">
+          <div className="text-center lg:text-left">
+            <h1 className="text-5xl font-bold">Update a Tourists Spot now!</h1>
+          </div>
+          <div className="card shrink-0 w-full  shadow-2xl bg-base-100">
+            <form onSubmit={handleUpdate} className="card-body">
+              <div className="flex justify-between space-x-3">
                 <div className="form-control w-full">
-                <label className="label">
+                  <label className="label">
                     <span className="label-text">Image</span>
-                </label>
-                <input
+                  </label>
+                  <input
                     type="text"
                     name="image"
                     placeholder="image URL"
                     className="input input-bordered"
                     required
-                />
+                  />
                 </div>
                 <div className="form-control w-full">
-                <label className="label">
+                  <label className="label">
                     <span className="label-text">Tourists Spot Name</span>
-                </label>
-                <input
+                  </label>
+                  <input
                     type="text"
                     name="tourSpot"
                     placeholder="tourists_spot_name"
                     className="input input-bordered"
                     required
-                />
+                  />
                 </div>
-            </div>
-            <div className="flex justify-between space-x-3">
+              </div>
+              <div className="flex justify-between space-x-3">
                 <div className="form-control w-full">
-                <label className="label">
+                  <label className="label">
                     <span className="label-text">Country Name</span>
-                </label>
-                <input
+                  </label>
+                  <input
                     type="text"
                     name="country"
                     placeholder="country_Name"
                     className="input input-bordered"
                     required
-                />
+                  />
                 </div>
                 <div className="form-control w-full">
-                <label className="label">
+                  <label className="label">
                     <span className="label-text">Location</span>
-                </label>
-                <input
+                  </label>
+                  <input
                     type="text"
                     name="location"
                     placeholder="location"
                     className="input input-bordered"
                     required
-                />
+                  />
                 </div>
-            </div>
-            
-            <div className="form-control w-full">
-            <label className="label">
-                <span className="label-text">Short Description</span>
-            </label>
-            <input
-                type="text"
-                name="description"
-                placeholder="short description"
-                className="input input-bordered"
-                required
-            />
-            </div>
-            <div className="flex justify-between space-x-3">
-                <div className="form-control w-full">
+              </div>
+
+              <div className="form-control w-full">
                 <label className="label">
-                    <span className="label-text">Average Cost</span>
+                  <span className="label-text">Short Description</span>
                 </label>
                 <input
+                  type="text"
+                  name="description"
+                  placeholder="short description"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="flex justify-between space-x-3">
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text">Average Cost</span>
+                  </label>
+                  <input
                     type="text"
                     name="cost"
                     placeholder="Average cost"
                     className="input input-bordered"
                     required
-                />
+                  />
                 </div>
                 <div className="form-control w-full">
-                <label className="label">
+                  <label className="label">
                     <span className="label-text">Seasonality</span>
-                </label>
-                <input
+                  </label>
+                  <input
                     type="text"
                     name="season"
                     placeholder="Seasonality"
                     className="input input-bordered"
                     required
-                />
+                  />
                 </div>
-            </div>
+              </div>
 
-
-            <div className="flex">
+              <div className="flex">
                 <div className="form-control w-full">
-                <label className="label">
+                  <label className="label">
                     <span className="label-text">Travel Time</span>
-                </label>
-                <input
+                  </label>
+                  <input
                     type="text"
                     name="time"
                     placeholder="trave time"
                     className="input input-bordered"
                     required
-                />
+                  />
                 </div>
                 <div className="form-control w-full">
-                <label className="label">
+                  <label className="label">
                     <span className="label-text">Total Visitors Per Year</span>
-                </label>
-                <input
+                  </label>
+                  <input
                     type="text"
                     name="total"
                     placeholder="totalVisitorsPerYear"
                     className="input input-bordered"
                     required
-                />
+                  />
                 </div>
-            </div>
+              </div>
 
-
-            {/* user details */}
-            <div className="flex justify-between space-x-3">
+              {/* user details */}
+              <div className="flex justify-between space-x-3">
                 <div className="form-control w-full">
-                <label className="label">
+                  <label className="label">
                     <span className="label-text">User Email: </span>
-                </label>
-                <input
+                  </label>
+                  <input
                     type="email"
                     name="email"
                     placeholder="user email"
                     className="input input-bordered"
                     required
-                />
+                  />
                 </div>
                 <div className="form-control w-full">
-                <label className="label">
+                  <label className="label">
                     <span className="label-text">User Name: </span>
-                </label>
-                <input
+                  </label>
+                  <input
                     type="text"
                     name="name"
                     placeholder="name"
                     className="input input-bordered"
                     required
-                />
+                  />
                 </div>
-            </div>
+              </div>
 
-            <div className="form-control mt-6">
-              <button className="btn btn-primary">Add </button>
-            </div>
-          </form>
-          <p className='text-xl text-center text-red-900 font-bold pb-5'>As A Tour Manager , want to update existing spot? Please Click on <Link className='text-blue-950 underline' to="/updatetourspot">Update <span className='font-serif'>A</span> Spot</Link></p>
+              <div className="form-control mt-6">
+                <button className="btn btn-primary">Update </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };
 
-export default AddTouristsSpot;
+export default UpdateTouristSpot;

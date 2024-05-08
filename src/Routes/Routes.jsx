@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../Components/Root";
-import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import AddTouristsSpot from "../Pages/AddTouristsSpot/AddTouristsSpot";
+import House from "../Shared/House";
+import SpotCardDetails from "../Pages/SpotCardDetails/SpotCardDetails";
+import UpdateTouristSpot from "../Pages/UpdateToristSpot/UpdateTouristSpot";
 
 
 const router = createBrowserRouter([
@@ -12,7 +14,8 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'/',
-                element: <Home></Home>,
+                element: <House></House>,
+                loader: () => fetch('http://localhost:5000/spot')
             },
             {
                 path: "/login",
@@ -21,6 +24,16 @@ const router = createBrowserRouter([
             {
                 path: "/addspots",
                 element: <AddTouristsSpot></AddTouristsSpot>
+            },
+            {
+                path: "/spotcarddetails/:_id",
+                element: <SpotCardDetails></SpotCardDetails>,
+                loader: ()=> fetch('http://localhost:5000/spot')
+
+            },
+            {
+                path: "/updatetourspot",
+                element: <UpdateTouristSpot></UpdateTouristSpot>
             }
 
         ]
