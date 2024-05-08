@@ -8,7 +8,7 @@ const Menu = () => {
             <Link to="/addspots"><li className="btn btn-ghost border-fuchsia-500 border-b-4 bg-purple-300 text-2xl font-serif font-semibold">Add Tourists Spot</li></Link>
             <Link to=""><li className="btn btn-ghost border-fuchsia-500 border-b-4 bg-purple-300 text-2xl font-serif font-semibold">All Tourists Spot</li></Link>
             <Link to=""><li className="btn btn-ghost border-fuchsia-500 border-b-4 bg-purple-300 text-2xl font-serif font-semibold">My List </li></Link>
-            <Link to=""><li className="btn btn-ghost border-fuchsia-500 border-b-4 bg-purple-300 text-2xl font-serif font-semibold">Login</li></Link>
+            <Link to="/login"><li className="btn btn-ghost border-fuchsia-500 border-b-4 bg-purple-300 text-2xl font-serif font-semibold">Login</li></Link>
             <Link to=""><li className="btn btn-ghost border-fuchsia-500 border-b-4 bg-purple-300 text-2xl font-serif font-semibold">Register</li></Link>
         </ul>
     );

@@ -5,6 +5,8 @@ import AddTouristsSpot from "../Pages/AddTouristsSpot/AddTouristsSpot";
 import House from "../Shared/House";
 import SpotCardDetails from "../Pages/SpotCardDetails/SpotCardDetails";
 import UpdateTouristSpot from "../Pages/UpdateToristSpot/UpdateTouristSpot";
+import LogOut from "../Pages/LogOut/LogOut";
+import SigInUp from "../SigInUp/SigInUp";
 
 
 const router = createBrowserRouter([
@@ -19,7 +21,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/login",
-                element: <Login></Login>
+                element: <SigInUp></SigInUp>
+            },
+            {
+                path: "/signuot",
+                element: <LogOut></LogOut>
             },
             {
                 path: "/addspots",
