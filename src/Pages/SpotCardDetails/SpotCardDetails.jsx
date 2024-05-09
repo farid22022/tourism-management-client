@@ -41,7 +41,7 @@ const SpotCardDetails = () => {
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",
-            text: "Visited Successfully",
+            text: "Added to Your profile Successfully",
             icon: "success",
             confirmButtonText: "Great",
           });
@@ -73,7 +73,7 @@ const SpotCardDetails = () => {
                 if(data.deletedCount > 0 ){
                     Swal.fire({
                             title: "Deleted!",
-                            text: "Your Coffee item has been deleted.",
+                            text: "This Spot Place has been deleted.",
                             icon: "success"
                         }).then(() =>{
                           window.location.href="/";

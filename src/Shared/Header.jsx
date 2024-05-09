@@ -47,9 +47,25 @@ const Header = () => {
         <div>
           <p className="text-6xl font-extrabold bg-white bg-opacity-10 space-x-1">
             <span className="bg-transparent  text-white">
-              World
+            <TypewriterComponent
+              options={{
+                strings: ["World"],
+                autoStart: true,
+                loop: true,
+                delay: 50,
+                // cursor: true
+              }}
+            />
             </span>
-            <span className="bg-transparent text-opacity-0 ">Tour</span>
+            <span className="bg-transparent text-opacity-0 "><TypewriterComponent
+              options={{
+                strings: ["Tour"],
+                autoStart: true,
+                loop: true,
+                delay: 50,
+                // cursor: true
+              }}
+            /></span>
           </p>
         </div>
         <div className="absolute top-5 right-5 ">
@@ -58,7 +74,7 @@ const Header = () => {
               {moment().format("dddd, MMMM D, YYYY")}
             </p>
             <div className="grid grid-cols-1 absolute left-40 mb-12">
-                <div className="w-20 btn btn-ghost btn-circle avatar  z-10 border-gray-950">
+                <div className="w-20 btn btn-ghost btn-circle avatar  z-10 ">
                     <div className=" rounded-full">
                       {
                         user ?
