@@ -1,28 +1,54 @@
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-/**
- *     const {
-        _id,
-        image, 
-        tourSpot, 
-        country ,
-        location ,
-        description, 
-        cost, 
-        season, 
-        time, 
-        total, 
-        email, 
-        name
-    } = spot;
- */
+
 const SpotCardDetails = () => {
   const spotPlaces = useLoaderData();
   console.log(spotPlaces);
   const { _id } = useParams();
 //   const idInt = parseInt(_id);
   const spotPlace = spotPlaces.find((spotPlace) => spotPlace._id === _id);
-  console.log(spotPlace)
+  console.log(spotPlace);
+
+
+  const VisitedSpot = {
+    _id: spotPlace._id,
+    image: spotPlace.image,
+    tourSpot: spotPlace.tourSpot,
+    country: spotPlace.country,
+    location: spotPlace.location,
+    description: spotPlace.description,
+    cost: spotPlace.cost,
+    season: spotPlace.season,
+    time: spotPlace.time,
+    total: spotPlace.total,
+    email: spotPlace.email,
+    name: spotPlace.name,
+  };
+  
+
+  // server side for sending data
+  const handleVisit = () =>{
+    fetch("http://localhost:5000/visitedspot", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(VisitedSpot),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Visited Successfully",
+            icon: "success",
+            confirmButtonText: "Great",
+          });
+        }
+      });
+  }
+  
 
   const handleDelete = _id =>{
     console.log(_id);
@@ -99,7 +125,7 @@ const SpotCardDetails = () => {
         </p>
         <div className="card-actions justify-end">
           <button className="btn btn-primary border-b-4 border-indigo-950 bg-indigo-500">Buy Now</button>
-          <button className="btn btn-primary border-b-4 border-indigo-950 bg-indigo-500">Visited !</button>
+          <button onClick={handleVisit} className="btn btn-primary border-b-4 border-indigo-950 bg-indigo-500">Visited !</button>
         </div>
         <div>
         <Link to={`/updatetourspot/${_id}`}><button className="bg-cyan-400 btn btn-primary text-xl border-b-4 border-cyan-800">Update Spot</button></Link>

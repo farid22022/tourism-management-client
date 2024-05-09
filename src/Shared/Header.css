@@ -8,7 +8,7 @@
     filter: drop-shadow(0 0 2em #646cffaa);
   }
   .logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
+    filter: drop-shadow(0 0 4em #14015caa);
   }
   
   @keyframes logo-spin {
@@ -32,9 +32,15 @@
 
 @keyframes bgImageSlide {
     0% { background-image: url('../../public/Banner1.jpg'); }
-    33% { background-image: url('../../public/Banner2.jpg'); }
-    66% { background-image: url('../../public/Banner3.jpg'); }
-    66% { background-image: url('../../public/Banner4.jpg'); }
+    25% { background-image: url('../../public/Banner2.jpg'); }
+    50% { background-image: url('../../public/Banner3.jpg'); }
+    75% { background-image: url('../../public/Banner4.jpg'); }
     100% { background-image: url('../../public/Banner1.jpg'); }
+}
+
+.transparent-text {
+  color: transparent; /* Make text transparent */
+  text-shadow: 0 0 5px white; /* Add a white shadow to create a white border */
+  position: absolute;
 }
 

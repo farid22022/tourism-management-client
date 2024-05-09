@@ -8,6 +8,7 @@ const House = () => {
 
     const loadedSpots = useLoaderData();
     const [spots, setSpots] = useState(loadedSpots);
+    console.log(spots)
 
     return (
         <div>

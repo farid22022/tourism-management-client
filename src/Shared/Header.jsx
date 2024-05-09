@@ -4,7 +4,24 @@ import logo from "../../public/planet-earth.png";
 import "animate.css";
 import "./Header.css";
 import NavBar from "./NavBar";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
+import { Link } from "react-router-dom";
+import Marquee from "react-fast-marquee";
+import { FaUserCircle } from "react-icons/fa";
+import UserProfile from "./UserProfile";
 const Header = () => {
+
+  const { user, logOut } = useContext(AuthContext);
+
+  // console.log(user.photoURL);
+  
+  const handleSignOut = () =>{
+      logOut()
+          .then()
+          .catch()
+  }
+
   return (
     <div className="bgImage">
       <div className="relative">
@@ -28,17 +45,60 @@ const Header = () => {
           </h2>
         </div>
         <div>
-          <p className="text-6xl font-extrabold bg-white bg-opacity-10">
-            <span className="bg-white bg-opacity-100 text-opacity-0">
+          <p className="text-6xl font-extrabold bg-white bg-opacity-10 space-x-1">
+            <span className="bg-transparent  text-white">
               World
             </span>
-            <span className="bg-white bg-opacity-100 text-opacity-0">Tour</span>
+            <span className="bg-transparent text-opacity-0 ">Tour</span>
           </p>
         </div>
         <div className="absolute top-5 right-5 ">
-          <p className="text-3xl myElement font-serif text-pink-700 font-semibold">
-            {moment().format("dddd, MMMM D, YYYY")}
-          </p>
+          <div className="relative space-y-3">
+            <p className="text-3xl myElement font-serif text-pink-700 font-semibold">
+              {moment().format("dddd, MMMM D, YYYY")}
+            </p>
+            <div className="grid grid-cols-1 absolute left-40 mb-12">
+                <div className="w-20 btn btn-ghost btn-circle avatar  z-10 border-gray-950">
+                    <div className=" rounded-full">
+                      {
+                        user ?
+                        
+                        <div className="grid grid-cols-1">
+                          
+                          <img alt='' src={user.photoURL} />
+                        </div>
+                        :
+                        <FaUserCircle></FaUserCircle>
+                      }
+                    </div>
+                    <div>
+                      {
+                        user?
+                        <Marquee><h2 className="text-xl text-amber-400">{user.email} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       </h2></Marquee>
+                        :
+                        <Marquee><h2>No User Found</h2></Marquee>
+                      }
+                      
+                    </div>
+                    
+                </div>
+                <div  className=" mt-40">
+                  {
+                    user ?
+                    <div className="grid-cols-1">
+                      <button onClick={handleSignOut} className="btn pt-3 pb-3 pr-4 pl-4 inline-block bg-transparent text-white border-2  border-sky-100">Sign Out</button>
+                      {/* <Link to="/userprofile"><button className="btn pt-3 pb-3 pr-4 pl-4 inline-block bg-transparent text-white border-2  border-sky-100">Profile</button></Link> */}
+                    </div>
+                    :
+                    <Link to="/signin">
+                        <button className="btn btn-secondary pt-3 pb-3 pr-4 pl-4 inline-block bg-transparent text-white border-2  border-sky-100">Login</button>
+                    </Link>
+                    
+                  }
+                </div>
+                
+            </div>
+          </div>
         </div>
         <div className="absolute bottom-16 left-80">
           <NavBar></NavBar>

@@ -16,6 +16,7 @@ const SpotCard = ({spot, spots, setSpots}) => {
         email, 
         name
     } = spot;
+   
 
   return (
     <div className="card w-96 bg-base-100 shadow-xl">

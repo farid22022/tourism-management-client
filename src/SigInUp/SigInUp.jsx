@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub , FaFacebook } from "react-icons/fa6";
 import {  } from "react-icons/fa";
-import './style.css'; // Import your CSS file
+import './style.css'; 
 import { AuthContext } from '../providers/AuthProvider';
 
 const SigInUp = () => {
