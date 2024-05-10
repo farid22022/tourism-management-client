@@ -8,6 +8,8 @@ import SignIn from "../Pages/SignIn"
 import UserProfile from "../Shared/UserProfile";
 import Register from "../Pages/Register";
 import PrivateRoute from "./PrivateRoute";
+import Bangladesh from "../Pages/Bangladesh";
+import MyList from "../Pages/MyList/MyList";
 
 
 const router = createBrowserRouter([
@@ -45,9 +47,20 @@ const router = createBrowserRouter([
             },
             {
                 path: "/userprofile",
-                element:<UserProfile></UserProfile>,
+                element:<PrivateRoute><UserProfile></UserProfile></PrivateRoute>,
                 loader: ()=> fetch('http://localhost:5000/visitedspot')
-            }
+            },
+            {
+                path: "/mylist",
+                element:<PrivateRoute><MyList></MyList></PrivateRoute>,
+                loader: ()=> fetch('http://localhost:5000/visitedspot')
+            },
+            {
+                path: "/bangladesh",
+                element: <Bangladesh></Bangladesh>,
+                loader: ()=> fetch('http://localhost:5000/spot'),
+            },
+            
 
         ]
     }

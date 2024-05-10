@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { Fade } from "react-awesome-reveal";
 
-const SpotCard = ({spot, spots, setSpots}) => {
+
+const Abangladesh = ({bangladesh}) => {
 
     const {
         _id,
@@ -16,12 +16,11 @@ const SpotCard = ({spot, spots, setSpots}) => {
         total, 
         email, 
         name
-    } = spot;
+    } = bangladesh;
    
 
-  return (
-    <Fade>
-      <div className="card w-96 bg-base-100 shadow-xl">
+    return (
+        <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
         <img
           src={image}
@@ -38,8 +37,7 @@ const SpotCard = ({spot, spots, setSpots}) => {
         </div>
       </div>
     </div>
-    </Fade>
-  );
+    );
 };
 
-export default SpotCard;
+export default Abangladesh;
