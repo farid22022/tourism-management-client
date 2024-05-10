@@ -5,7 +5,7 @@ import VisitedSpot from "./VisitedSpot";
 import Menu from "./Menu";
 import "./Profile.css"
 import TypewriterComponent from "typewriter-effect";
-import { Fade } from "react-awesome-reveal";
+import Comments from "./Comments";
 
 const UserProfile = () => {
 
@@ -15,7 +15,7 @@ const UserProfile = () => {
   setLoading(false);
 
   return (
-    <div>
+    <div className="grid-cols-1 items-center">
         <Menu></Menu>
       <div className="">
         <>
@@ -56,6 +56,11 @@ const UserProfile = () => {
           </div>
           
         </div>
+        
+      </div>
+      
+      <div className="text-center lg:ml-96 pl-60">
+        <Comments></Comments>
       </div>
     </div>
   );

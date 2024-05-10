@@ -10,6 +10,8 @@ import Register from "../Pages/Register";
 import PrivateRoute from "./PrivateRoute";
 import Bangladesh from "../Pages/Bangladesh";
 import MyList from "../Pages/MyList/MyList";
+import Comments from "../Shared/Comments";
+import AllComments from "../Shared/AllComments";
 
 
 const router = createBrowserRouter([
@@ -60,6 +62,11 @@ const router = createBrowserRouter([
                 element: <Bangladesh></Bangladesh>,
                 loader: ()=> fetch('http://localhost:5000/spot'),
             },
+            {
+                path: "/comment",
+                element: <AllComments></AllComments>,
+                loader: () => fetch('http://localhost:5000/comment')
+            }
             
 
         ]

@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Home from "../Pages/Home/Home";
 import { useState } from "react";
 import SpotCard from "../Pages/SpotCard/SpotCard";
+import AllComments from "./AllComments";
 
 
 const House = () => {
@@ -24,6 +25,7 @@ const House = () => {
             }
 
             </div>
+            <AllComments></AllComments>
         </div>
     );
 };
