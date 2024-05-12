@@ -1,60 +1,83 @@
 import Swal from "sweetalert2";
 import Menu from "../../Shared/Menu";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import 'animate.css';
 
 const UpdateTouristSpot = () => {
-    const handleUpdate = e =>{
-        e.preventDefault();
-        const form = e.target;
-        const image = form.image.value;
-        const tourSpot = form.tourSpot.value;
-        const country = form.country.value;
-        const location = form.location.value;
-        const description = form.description.value;
-        const cost = form.cost.value;
-        const season = form.season.value;
-        const time = form.time.value;
-        const total = form.total.value;
-        const email = form.email.value;
-        const name = form.name.value;
-        console.log(image, tourSpot, country ,location ,description, cost, season, time, total, email, name);
 
-        const updatedSpot ={
-            image, 
-            tourSpot, 
-            country ,
-            location ,
-            description, 
-            cost, 
-            season, 
-            time, 
-            total, 
-            email, 
-            name
+    const spot  = useLoaderData()
+   const {image,
+    tourSpot,
+    country,
+    location,
+    description,
+    cost,
+    season,
+    time,
+    total,
+    email,
+    name} = spot;
+  const handleUpdate = e => {
+    e.preventDefault();
+    const form = e.target;
+    const image = form.image.value;
+    const tourSpot = form.tourSpot.value;
+    const country = form.country.value;
+    const location = form.location.value;
+    const description = form.description.value;
+    const cost = form.cost.value;
+    const season = form.season.value;
+    const time = form.time.value;
+    const total = form.total.value;
+    const email = form.email.value;
+    const name = form.name.value;
+    console.log(image, tourSpot, country, location, description, cost, season, time, total, email, name);
+
+    const updatedSpot = {
+        image,
+        tourSpot,
+        country,
+        location,
+        description,
+        cost,
+        season,
+        time,
+        total,
+        email,
+        name
+    };
+
+    //server side for sending data
+    fetch(`http://localhost:5000/spot/${updatedSpot._id}`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(updatedSpot)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        if (data.insertedId) {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Tourist Spot Updated Successfully',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+            });
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire({
+            title: 'Error!',
+            text: 'An unexpected error occurred',
+            icon: 'error',
+            confirmButtonText: 'Okay'
+        });
+    });
+};
 
-        //server side for sending data
-        fetch('http://localhost:5000/spot/${_id}', {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updatedSpot)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if(data.insertedId){
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Coffee Added Successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                      })
-                }
-            })
-    }
   return (
     <div>
       <Menu></Menu>
@@ -75,6 +98,7 @@ const UpdateTouristSpot = () => {
                     name="image"
                     placeholder="image URL"
                     className="input input-bordered"
+                    defaultValue={image}
                     required
                   />
                 </div>
@@ -86,6 +110,7 @@ const UpdateTouristSpot = () => {
                     type="text"
                     name="tourSpot"
                     placeholder="tourists_spot_name"
+                    defaultValue={tourSpot}
                     className="input input-bordered"
                     required
                   />
@@ -100,6 +125,7 @@ const UpdateTouristSpot = () => {
                     type="text"
                     name="country"
                     placeholder="country_Name"
+                    defaultValue={country}
                     className="input input-bordered"
                     required
                   />
@@ -112,6 +138,7 @@ const UpdateTouristSpot = () => {
                     type="text"
                     name="location"
                     placeholder="location"
+                    defaultValue={location}
                     className="input input-bordered"
                     required
                   />
@@ -126,6 +153,7 @@ const UpdateTouristSpot = () => {
                   type="text"
                   name="description"
                   placeholder="short description"
+                  defaultValue={description}
                   className="input input-bordered"
                   required
                 />
@@ -140,6 +168,7 @@ const UpdateTouristSpot = () => {
                     name="cost"
                     placeholder="Average cost"
                     className="input input-bordered"
+                    defaultValue={cost}
                     required
                   />
                 </div>
@@ -151,6 +180,7 @@ const UpdateTouristSpot = () => {
                     type="text"
                     name="season"
                     placeholder="Seasonality"
+                    defaultValue={season}
                     className="input input-bordered"
                     required
                   />
@@ -166,6 +196,7 @@ const UpdateTouristSpot = () => {
                     type="text"
                     name="time"
                     placeholder="trave time"
+                    defaultValue={time}
                     className="input input-bordered"
                     required
                   />
@@ -178,6 +209,7 @@ const UpdateTouristSpot = () => {
                     type="text"
                     name="total"
                     placeholder="totalVisitorsPerYear"
+                    defaultValue={total}
                     className="input input-bordered"
                     required
                   />
@@ -194,6 +226,7 @@ const UpdateTouristSpot = () => {
                     type="email"
                     name="email"
                     placeholder="user email"
+                    defaultValue={email}
                     className="input input-bordered"
                     required
                   />
@@ -206,6 +239,7 @@ const UpdateTouristSpot = () => {
                     type="text"
                     name="name"
                     placeholder="name"
+                    defaultValue={name}
                     className="input input-bordered"
                     required
                   />
