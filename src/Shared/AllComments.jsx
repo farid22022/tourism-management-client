@@ -13,7 +13,7 @@ const AllComments = () => {
     }, []); // Empty dependency array ensures this effect runs only once when the component mounts
 
     return (
-        <div className="grid grid-cols-2 space-x-3 space-y-3 mt-24">
+        <div className="grid grid-cols-2 md:grid-cols-2 space-x-3 space-y-3 mt-24">
             {
                 allComments.map(feedBack => <FeedBack
                     key={feedBack._id}

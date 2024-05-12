@@ -169,7 +169,6 @@ const SpotCardDetails = () => {
             Tour Manager : <span className="text-blue-500 font-serif font-extrabold">{spotPlace.name}</span>
         </p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary border-b-4 border-indigo-950 bg-indigo-500">Buy Now</button>
           <button onClick={handleVisit} className="btn btn-primary border-b-4 border-indigo-950 bg-indigo-500">Visited !</button>
         </div>
         <div>
