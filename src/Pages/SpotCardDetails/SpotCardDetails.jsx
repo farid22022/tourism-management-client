@@ -1,5 +1,6 @@
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import Menu from "../../Shared/Menu";
 
 const SpotCardDetails = () => {
   const spotPlaces = useLoaderData();
@@ -8,6 +9,7 @@ const SpotCardDetails = () => {
 //   const idInt = parseInt(_id);
   const spotPlace = spotPlaces.find((spotPlace) => spotPlace._id === _id);
   console.log(spotPlace);
+    
 
 
   const VisitedSpot = {
@@ -91,15 +93,58 @@ const SpotCardDetails = () => {
 
   }
 
+  const handleFeedback = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    
+    const email = form.email.value;
+    const feedBack = form.feedback.value;
+    console.log(
+      
+      email,
+      feedBack
+    );
+
+    const newSpot = {
+      
+      email,
+      feedBack
+    };
+
+    //server side for sending data
+    fetch("http://localhost:5000/feed", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newSpot),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Your Feedback added Spot Place is Added Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
+  };
+
   return (
-    <div className="card card-compact w-3/5 bg-base-100 shadow-xl">
+    <div className="text-center md:pl-12 md:pr-12">
+      <Menu></Menu>
+      <div className={`card card-compact col-span-3 bg-base-100 shadow-xl row-span-1/12`}>
       <figure>
         <img 
+          className="rounded-3xl shadow-2xl"
           src={spotPlace.image}
           alt="Shoes"
         />
       </figure>
-      <div className="card-body w-full">
+      <div className="card-body">
         <h2 className="card-title text-3xl">Spot Name : <span className="text-3xl font-serif text-red-800 font-extrabold">{spotPlace.tourSpot}</span></h2>
         <div className="flex">
             <p className="text-3xl">Location : <span className="text-blue-500 font-bold font-sans">{spotPlace.location}</span></p>
@@ -131,6 +176,37 @@ const SpotCardDetails = () => {
         <Link to={`/updatetourspot/${_id}`}><button className="bg-cyan-400 btn btn-primary text-xl border-b-4 border-cyan-800">Update Spot</button></Link>
         <button onClick={() =>handleDelete(_id)} className="bg-cyan-400 btn btn-primary text-xl border-b-4 border-cyan-800">Delete Spot</button>
         </div>
+      </div>
+      </div>
+      <div className={`text-end mt-12`}>
+        <form onSubmit={handleFeedback} className="">
+          <div className="">
+            <label className="">
+              <span className="label-text text-xl font-bold">Email</span>
+            </label>
+            <input type="email" 
+                  placeholder="Email"
+                  name="email"
+                  className="input input-bordered" required />
+          </div>
+          <div className="">
+            <label className="h-48">
+              <span className="label-text text-xl font-bold h-48">Feed Back</span>
+            </label>
+            <input 
+                type="text"
+                placeholder="Your Feedback"
+                name="feedback" 
+                className="input input-bordered h-48 pl-2 text-start" 
+                required 
+            />
+
+          </div>
+          
+          <div className="form-control mt-6">
+            <button className="btn btn-primary">Login</button>
+          </div>
+        </form>
       </div>
     </div>
   );

@@ -63,9 +63,9 @@ const router = createBrowserRouter([
                 loader: ()=> fetch('http://localhost:5000/spot'),
             },
             {
-                path: "/comment",
+                path: "/feed",
                 element: <AllComments></AllComments>,
-                loader: () => fetch('http://localhost:5000/comment')
+                loader: () => fetch('http://localhost:5000/feed')
             }
             
 

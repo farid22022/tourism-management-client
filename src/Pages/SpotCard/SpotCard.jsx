@@ -29,7 +29,7 @@ const SpotCard = ({spot, spots, setSpots}) => {
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title text-xl">Place Name :<span className="text-red-600 font-serif font-semibold">{name}</span></h2>
+        <h2 className="card-title text-xl">Place Name :<span className="text-red-600 font-serif font-semibold">{tourSpot}</span></h2>
         <p className="text-3xl font-extrabold text-blue-600">description: </p>
         <p className="font-serif text-xl">{description}</p>
         <div className="card-actions justify-end">
