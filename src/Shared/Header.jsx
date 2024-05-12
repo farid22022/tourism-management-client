@@ -9,7 +9,6 @@ import { AuthContext } from "../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import { FaUserCircle } from "react-icons/fa";
-import UserProfile from "./UserProfile";
 const Header = () => {
 
   const { user, logOut } = useContext(AuthContext);

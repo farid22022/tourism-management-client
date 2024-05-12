@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import FeedBack from "./FeedBack";
+import "animate.css";
 
 const AllComments = () => {
     const [allComments, setAllComments] = useState([]);

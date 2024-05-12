@@ -5,7 +5,7 @@ import 'animate.css';
 
 const UpdateTouristSpot = () => {
 
-    const spot  = useLoaderData()
+   const spot  = useLoaderData()
    const {image,
     tourSpot,
     country,
