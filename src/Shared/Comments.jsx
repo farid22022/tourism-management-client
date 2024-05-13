@@ -15,7 +15,7 @@ const Comments = () => {
       feedback
     };
   
-    fetch("http://localhost:5000/comment", {
+    fetch("https://tourism-management-server-jet.vercel.app/comment", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -50,7 +50,8 @@ const Comments = () => {
 
   return (
     <div>
-      <div className="card shrink-0 w-3/6 pl-12  shadow-2xl bg-transparent text-end">
+          <h2 className="text-4xl text-center font-extrabold text-blue-950 mt-12 mb-12">Say About Tour Spot!!</h2>
+          <div className="card shrink-0 w-3/6 pl-12  shadow-2xl bg-transparent text-end">
             <form onSubmit={handleComment} className="card-body text-center">
               <div className="form-control text-center">
                 <label className="label">
@@ -90,7 +91,7 @@ const Comments = () => {
               </div>
               
               
-              <div className="form-control mt-6">
+              <div className="form-control mt-6 w-20">
                 <button className="btn btn-primary">Comment it!</button>
               </div>
             </form>

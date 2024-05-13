@@ -10,7 +10,6 @@ import Register from "../Pages/Register";
 import PrivateRoute from "./PrivateRoute";
 import Bangladesh from "../Pages/Bangladesh";
 import MyList from "../Pages/MyList/MyList";
-import Comments from "../Shared/Comments";
 import AllComments from "../Shared/AllComments";
 
 
@@ -22,7 +21,7 @@ const router = createBrowserRouter([
             {
                 path:'/',
                 element: <House></House>,
-                loader: () => fetch('http://localhost:5000/spot')
+                loader: () => fetch('https://tourism-management-server-jet.vercel.app/spot')
             },
             {
                 path: "/signin",
@@ -39,33 +38,33 @@ const router = createBrowserRouter([
             {
                 path: "/spotcarddetails/:_id",
                 element: <PrivateRoute><SpotCardDetails></SpotCardDetails></PrivateRoute>,
-                loader: ()=> fetch('http://localhost:5000/spot')
+                loader: ()=> fetch('https://tourism-management-server-jet.vercel.app/spot')
 
             },
             {
                 path: "/updatetourspot/:id",
                 element: <UpdateTouristSpot></UpdateTouristSpot>,
-                loader: ({params}) => fetch(`http://localhost:5000/spot/${params.id}`)
+                loader: ({params}) => fetch(`https://tourism-management-server-jet.vercel.app/spot/${params.id}`)
             },
             {
                 path: "/userprofile",
                 element:<PrivateRoute><UserProfile></UserProfile></PrivateRoute>,
-                loader: ()=> fetch('http://localhost:5000/visitedspot')
+                loader: ()=> fetch('https://tourism-management-server-jet.vercel.app/visitedspot')
             },
             {
                 path: "/mylist",
                 element:<PrivateRoute><MyList></MyList></PrivateRoute>,
-                loader: ()=> fetch('http://localhost:5000/visitedspot')
+                loader: ()=> fetch('https://tourism-management-server-jet.vercel.app/visitedspot')
             },
             {
                 path: "/bangladesh",
                 element: <Bangladesh></Bangladesh>,
-                loader: ()=> fetch('http://localhost:5000/spot'),
+                loader: ()=> fetch('https://tourism-management-server-jet.vercel.app/spot'),
             },
             {
                 path: "/feed",
                 element: <AllComments></AllComments>,
-                loader: () => fetch('http://localhost:5000/feed')
+                loader: () => fetch('https://tourism-management-server-jet.vercel.app/feed')
             }
             
 

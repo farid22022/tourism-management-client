@@ -112,7 +112,7 @@ const SpotCardDetails = () => {
     };
 
     //server side for sending data
-    fetch("http://localhost:5000/feed", {
+    fetch("https://tourism-management-server-jet.vercel.app/feed", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -177,6 +177,7 @@ const SpotCardDetails = () => {
         </div>
       </div>
       </div>
+      <h3 className={"text-3xl font-extrabold text-center text-blue-850"}>Say About Tour Spot  </h3>
       <div className={`text-end mt-12`}>
         <form onSubmit={handleFeedback} className="">
           <div className="">
@@ -203,7 +204,7 @@ const SpotCardDetails = () => {
           </div>
           
           <div className="form-control mt-6">
-            <button className="btn btn-primary">Login</button>
+            <button className="btn btn-primary">Comment</button>
           </div>
         </form>
       </div>
