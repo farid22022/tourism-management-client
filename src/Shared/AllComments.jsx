@@ -6,7 +6,7 @@ const AllComments = () => {
     const [allComments, setAllComments] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/feed')
+        fetch('https://tourism-management-server-jet.vercel.app/feed')
             .then(res => res.json())
             .then(data => setAllComments(data))
             .catch(error => console.error("Error fetching feedback data:", error));

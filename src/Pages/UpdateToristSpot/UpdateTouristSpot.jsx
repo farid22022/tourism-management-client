@@ -48,7 +48,7 @@ const UpdateTouristSpot = () => {
     };
 
     //server side for sending data
-    fetch(`http://localhost:5000/spot/${updatedSpot._id}`, {
+    fetch(`https://tourism-management-server-jet.vercel.app/spot/${updatedSpot._id}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json'

@@ -30,7 +30,7 @@ const SpotCardDetails = () => {
 
   // server side for sending data
   const handleVisit = () =>{
-    fetch("http://localhost:5000/visitedspot", {
+    fetch("https://tourism-management-server-jet.vercel.app/visitedspot", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -65,7 +65,7 @@ const SpotCardDetails = () => {
       }).then((result) => {
         if (result.isConfirmed) {
 
-        fetch(`http://localhost:5000/spot/${_id}`, {
+        fetch(`https://tourism-management-server-jet.vercel.app/spot/${_id}`, {
             method: 'DELETE',
 
         })
